@@ -1,0 +1,39 @@
+using System;
+using System.IO;
+
+namespace problem4_7
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello, World!");
+            Stack<string> myStack = new Stack<string>();
+            myStack.Push(null);
+
+
+            try
+            {
+                using (StreamReader s = new StreamReader("myXML.xml"))
+                {
+                    string line;
+                    
+                    while ((line = s.ReadLine()) != null)
+                    {
+                        Console.WriteLine(line);
+                        if (line.StartsWith("<") && line.EndsWith(">") && !line.Contains('/'))
+                        {
+                            myStack.Push(line);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error, check your directory,please.");
+                Console.WriteLine(e.Message);
+            }
+        }
+
+    }
+}
