@@ -1,0 +1,75 @@
+namespace problem4_6
+{
+    class myQueue<T>
+    {
+
+        LinkedList<T> mylist = new LinkedList<T>();
+
+        public void Enqueue(T data)
+        {
+            mylist.AddLast(data);
+        }
+        public void Dequeue()
+        {
+            mylist.RemoveFirst();
+        }
+
+        public T Peek()
+        {
+            return mylist.First.Value;
+        }
+        public void Clear()
+        {
+            mylist.Clear();
+        }
+        public int Count()
+        {
+            int count = 0;
+            count = mylist.Count;
+            return count;
+        }
+        public bool Contains(T data)
+        {
+            if (mylist.Contains(data))
+            {
+                return true;
+            }
+            else { return false; }
+        }
+        public bool IsEmpty()
+        {
+            if (mylist.Count == 0)
+            {
+                return true;
+            }
+            else { return false; }
+        }
+
+        public void Display()
+        {
+            LinkedList<T>.Enumerator e = mylist.GetEnumerator();
+            while (e.MoveNext())
+            {
+                Console.Write(e.Current);
+                Console.Write(' ');
+            }
+            Console.WriteLine();
+        }
+    }
+    internal class Program
+    {
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello, World!");
+            problem4_6.myQueue<int> theQueue = new problem4_6.myQueue<int>();
+            theQueue.Enqueue(1);
+            theQueue.Enqueue(2);
+            theQueue.Enqueue(3);
+            theQueue.Display();
+
+            theQueue.Dequeue();
+            theQueue.Display();
+        }
+    }
+}
