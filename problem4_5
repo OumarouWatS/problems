@@ -1,0 +1,75 @@
+namespace problem4_5
+{
+    class myStack<T>
+    {
+        
+        LinkedList<T> mylist = new LinkedList<T>();
+
+        public void Push(T data)
+        {
+            mylist.AddLast(data);
+        }
+        public void Pop()
+        {
+            mylist.RemoveLast();
+        }
+        
+        public T Peek()
+        {
+            return mylist.Last.Value;
+        }
+        public int Count()
+        {
+            int count = 0;
+            count = mylist.Count;
+            return count;
+        }
+        public bool Contains(T data)
+        {
+            if (mylist.Contains(data))
+            {
+                return true;
+            }
+            else { return false; }
+        }
+        public void Clear()
+        {
+            mylist.Clear();
+        }
+        public bool IsEmpty()
+        {
+            if(mylist.Count == 0)
+            {
+                return true;
+            }
+            else { return false; }
+        }
+
+        public void Display()
+        {
+            LinkedList<T>.Enumerator e = mylist.GetEnumerator();
+            while (e.MoveNext())
+            {
+                Console.Write(e.Current);
+                Console.Write(' ');
+            }
+            Console.WriteLine();
+        }
+    }
+    internal class Program
+    {
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello, World!");
+            problem4_5.myStack<int> theStack = new problem4_5.myStack<int>();
+            theStack.Push(1);
+            theStack.Push(2);
+            theStack.Push(3);
+            theStack.Display();
+
+            theStack.Pop();
+            theStack.Display();
+        }
+    }
+}
